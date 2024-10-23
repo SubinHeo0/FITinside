@@ -17,6 +17,10 @@ public class CookieUtil {
         cookie.setMaxAge(maxAge);
 
         response.addCookie(cookie);
+        // SameSite=None 속성을 수동으로 설정
+        String cookieHeader = String.format("%s=%s; Max-Age=%d; Path=/; Secure; HttpOnly; SameSite=None",
+                name, value, maxAge);
+        response.addHeader("Set-Cookie", cookieHeader);
     }
 
     public static void deleteCookie(HttpServletRequest request, HttpServletResponse response, String name) {
