@@ -5,6 +5,7 @@ import com.team2.fitinside.global.exception.CustomException;
 import com.team2.fitinside.global.exception.ErrorCode;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -15,6 +16,9 @@ import org.springframework.stereotype.Service;
 public class CouponEmailService {
 
     private final JavaMailSender javaMailSender;
+
+    @Value("${spring.mail.username}")
+    private String fromEmail;
 
     @Async
     public void sendEmail(CouponEmailRequestDto dto) {
@@ -31,7 +35,7 @@ public class CouponEmailService {
             mimeMessageHelper.setSubject("FITinside 쿠폰 메일");
 
             // 발신자 설정
-            mimeMessageHelper.setFrom("chm20060@gmail.com", "FITinside 관리자");
+            mimeMessageHelper.setFrom(fromEmail, "FITinside 관리자");
 
             // 메일의 내용 설정
             mimeMessageHelper.setText(dto.getTemplate(), true);
