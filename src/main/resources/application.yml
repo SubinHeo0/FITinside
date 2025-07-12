@@ -7,28 +7,34 @@ spring:
       max-file-size: 128MB
       max-request-size: 128MB
 
-  # H2 DB 설정
   datasource:
-    driver-class name: org.h2.Driver
-    url: jdbc:h2:mem:fitinside
-    username: sa
-    password: ''
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${AWS_RDS_URL}
+    username: ${AWS_RDS_USERNAME}
+    password: ${AWS_RDS_PASSWORD}
 
-  # H2 console 설정
-  h2:
-    console:              # h2 DB를 웹에서 관리할 수 있는 기능
-      enabled: true       # h2 console 사용 여부
-      path: /h2-console   # h2 console 접속 주소
+  # H2 DB 설정
+#  datasource:
+#    driver-class name: org.h2.Driver
+#    url: jdbc:h2:mem:fitinside
+#    username: sa
+#    password: ''
+
+   # H2 console 설정
+#  h2:
+#    console:              # h2 DB를 웹에서 관리할 수 있는 기능
+#      enabled: true       # h2 console 사용 여부
+#      path: /h2-console   # h2 console 접속 주소
 
   # jpa 설정
   jpa:
     hibernate:
-      ddl-auto: create    # DB 초기화 전략
+      ddl-auto: update    # DB 초기화 전략
     properties:
       hibernate:
         format_sql: true  # 쿼리 로그 포맷 (저렬)
         show_sql: true    # 쿼리 로그 출력
-    defer-datasource-initialization: true
+#    defer-datasource-initialization: true
 
   security:
     oauth2:
@@ -45,7 +51,7 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: chm20060
+    username: ${SMTP_USERNAME}
     password: ${SMTP_PASSWORD}
     properties:
       mail:
@@ -64,7 +70,7 @@ cloud:
       accessKey: ${AWS_ACCESS_KEY}
       secretKey: ${AWS_SECRET_KEY}
     s3:
-      bucketName: fitinside
+      bucketName: elice-fitinside
     region:
       static: ap-northeast-2
     stack:
