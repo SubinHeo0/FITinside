@@ -40,4 +40,6 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
                                          @Param("endDate") LocalDateTime endDate,
                                          Pageable pageable);
 
+    boolean existsByCode(String code);
+
 }

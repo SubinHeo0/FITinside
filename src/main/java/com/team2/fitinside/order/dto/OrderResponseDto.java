@@ -11,6 +11,7 @@ import java.util.List;
 public class OrderResponseDto { // 주문 확인 DTO (관리자 목록용)
 
     private Long orderId;
+    private String code;
     private String orderStatus;
     private int totalPrice;
     private int discountedTotalPrice;
