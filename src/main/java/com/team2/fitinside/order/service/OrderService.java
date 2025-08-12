@@ -7,12 +7,13 @@ import com.team2.fitinside.coupon.entity.CouponMember;
 import com.team2.fitinside.coupon.repository.CouponMemberRepository;
 import com.team2.fitinside.coupon.service.CouponService;
 import com.team2.fitinside.global.exception.CustomException;
+import com.team2.fitinside.member.entity.Authority;
 import com.team2.fitinside.member.entity.Member;
 import com.team2.fitinside.member.repository.MemberRepository;
-import com.team2.fitinside.order.entity.OrderStatus;
 import com.team2.fitinside.order.dto.*;
 import com.team2.fitinside.order.entity.Order;
 import com.team2.fitinside.order.entity.OrderProduct;
+import com.team2.fitinside.order.entity.OrderStatus;
 import com.team2.fitinside.order.mapper.OrderMapper;
 import com.team2.fitinside.order.repository.OrderRepository;
 import com.team2.fitinside.product.entity.Product;
@@ -24,7 +25,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import static com.team2.fitinside.global.exception.ErrorCode.*;
 
@@ -44,7 +48,7 @@ public class OrderService {
     public OrderDetailResponseDto findOrder(Long orderId) {
 
         Order findOrder = orderRepository.findById(orderId).orElseThrow(() -> new CustomException(ORDER_NOT_FOUND));
-        checkAuthorization(findOrder);
+        if (!isAdmin()) checkAuthorization(findOrder);
 
         return orderMapper.toOrderDetailResponseDto(findOrder);
     }
@@ -79,6 +83,7 @@ public class OrderService {
         // 주문 생성
         Order order = Order.builder()
                 .member(findMember)
+                .code(createUniqueOrderCode())
                 .deliveryFee(request.getDeliveryFee())
                 .postalCode(request.getPostalCode())
                 .deliveryAddress(request.getDeliveryAddress())
@@ -172,6 +177,36 @@ public class OrderService {
         if (!loginMemberId.equals(order.getMember().getId())) {
             throw new CustomException(USER_NOT_AUTHORIZED);
         }
+    }
+
+    private boolean isAdmin() {
+        Long loginMemberId = securityUtil.getCurrentMemberId();
+        return memberRepository.findById(loginMemberId)
+                .map(member -> member.getAuthority() == Authority.ROLE_ADMIN)
+                .orElse(false);
+    }
+
+    private String createUniqueOrderCode() {
+        String code;
+        do {
+            code = createOrderCode();
+        } while (orderRepository.existsByCode(code));
+        return code;
+    }
+
+    // 주문 번호 생성(yyMMdd-숫자6자리)
+    private String createOrderCode() {
+        StringBuilder code = new StringBuilder();
+
+        SimpleDateFormat format = new SimpleDateFormat("yyMMdd");
+        code.append(format.format(new Date())).append("-");
+
+        Random random = new Random();
+        for (int i = 0; i < 6; i++) {
+            code.append(random.nextInt(10));
+        }
+
+        return code.toString();
     }
 
 }
