@@ -11,6 +11,7 @@ import java.util.List;
 public class OrderDetailResponseDto { // 주문 상세 확인 DTO
 
     private Long orderId;
+    private String code;
     private String orderStatus;
     private int totalPrice; // 할인 전 총가격
     private int discountedTotalPrice; // 할인 후 총가격

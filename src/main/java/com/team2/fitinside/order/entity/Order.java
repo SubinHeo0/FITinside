@@ -34,6 +34,9 @@ public class Order {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
+    @Column(name = "order_code", nullable = false)
+    private String code;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "order_status", nullable = false)
     @Builder.Default

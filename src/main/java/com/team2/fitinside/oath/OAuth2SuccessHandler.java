@@ -25,7 +25,8 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
 
     private final TokenProvider tokenProvider;
     private final RefreshTokenCookieUtil refreshTokenCookieUtil;
-    private static final String URI = "http://localhost:3000/tokenCheck";
+//    private static final String URI = "http://localhost:3000/tokenCheck";
+    private static final String URI = "https://click-fitinside.netlify.app/tokenCheck";
     private final MemberRepository memberRepository;
 
     @Override
