@@ -126,4 +126,8 @@ public class Product {
     public void setIsSoldOut(boolean b) {
         this.isSoldOut = b;
     }
+
+    public void restoreStock(int count) {
+        this.stock += count;
+    }
 }

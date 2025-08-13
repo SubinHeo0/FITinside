@@ -54,4 +54,10 @@ public class OrderProduct {
         this.order = order;
     }
 
+    // 상품 수량 복구, 쿠폰 사용 여부 복구
+    public void deleteOrderProduct() {
+        this.isDeleted = true;
+        this.product.restoreStock(this.count);
+        this.couponMember.cancelUseCoupon();
+    }
 }
