@@ -89,9 +89,12 @@ public class Order {
         this.orderStatus = status;
     }
 
-    // 주문 취소
+    // 주문 취소(주문 상태 변경, 상품 수량, 쿠폰 사용 여부 복구
     public void cancelOrder() {
         this.orderStatus = OrderStatus.CANCELLED;
+        for (OrderProduct orderProduct : orderProducts) {
+            orderProduct.deleteOrderProduct();
+        }
     }
 
     // 주문 상품 추가 및 총 가격, 할인 가격 업데이트

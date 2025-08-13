@@ -38,4 +38,8 @@ public class CouponMember {
     public void useCoupon() {
         this.used = true;
     }
+
+    public void cancelUseCoupon() {
+        this.used = false;
+    }
 }
