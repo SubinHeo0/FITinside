@@ -23,6 +23,7 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
 
     @Query("SELECT c FROM Coupon c " +
             "LEFT JOIN FETCH c.category " + // 카테고리가 null인 경우도 포함
-            "WHERE c.name LIKE %:name%")
+            "WHERE c.name LIKE %:name% " +
+            "AND c.active = true")
     List<Coupon> findByNameContains(@Param("name") String name);
 }
