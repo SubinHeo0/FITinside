@@ -10,6 +10,14 @@ FITinside는 LF몰, 무신사와 같은 온라인 쇼핑몰을 모티브로 한 
 
 <br>
 
+✔ https://click-fitinside.netlify.app
+| **테스트 계정** |        **아이디**        |        **비밀번호**        |
+| :------: | :--------------------: | :--------------------: |
+|  관리자  | admin@fitinside.com | admin1234 |
+|  회원  | test@fitinside.com | test1234 |
+
+<br>
+
 ## 팀원 구성
 
 | **이름** |        **역할**        |
@@ -73,13 +81,9 @@ FITinside는 LF몰, 무신사와 같은 온라인 쇼핑몰을 모티브로 한 
 
 <img src="https://img.shields.io/badge/gitlab-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
 
-<br>
-
 ### 협업 툴
 
 <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white"> <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
-
-<br>
 
 ### 기타
 
