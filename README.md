@@ -217,6 +217,8 @@ src
 <img width="2876" height="1158" alt="Image" src="https://github.com/user-attachments/assets/272a6405-cb97-439a-8bda-01690ad45b21" />
 
 <br>
+<br>
+<br>
 
 ## 주요 기능
 
@@ -237,6 +239,8 @@ src
 - 클라이언트에 저장된 AccessToken으로 로그인 유지 가능
 - 토큰 탈취 대책으로 짧은 수명의 AccessToken 생성, 자동 재발급을 위한 RefreshToken 쿠키 저장
 
+<br>
+
 ### 배너
 
 - 메인 화면에서 광고 기능
@@ -247,6 +251,8 @@ src
   - 관리자가 광고에 URL을 설정해 놓았으면 회원은 광고 배너 클릭을 통해 해당 광고의 상세 페이지로 이동 가능
 
   ![Image](https://github.com/user-attachments/assets/f378895b-a8d9-4cfe-99d5-f3e97baff0f7)
+
+<br>
 
 ### 카테고리
 
@@ -263,6 +269,8 @@ src
   - 카테고리 생성, 수정, 삭제 가능 (이미지와 정렬 순서 추가 가능)
 
   ![Image](https://github.com/user-attachments/assets/f8a7b222-d677-481d-85be-83ea17dab253)
+
+<br>
 
 ### 상품
 
@@ -283,6 +291,8 @@ src
 
   ![Image](https://github.com/user-attachments/assets/d91a1877-925d-4c34-b80d-87a71905f379)
 
+<br>
+
 ### 장바구니
 
 - 비회원/회원 구분없이 장바구니 추가 가능
@@ -293,6 +303,8 @@ src
 - 배송비, 쿠폰 등이 적용된 결제 예정 금액 출력 기능
 
   ![Image](https://github.com/user-attachments/assets/59984b7c-348c-4592-836b-515cf988b1bb)
+
+<br>
 
 ### 쿠폰
 
@@ -316,6 +328,8 @@ src
 
   ![Image](https://github.com/user-attachments/assets/060c66a2-5433-43a0-95f7-98904aca6af7)
 
+<br>
+
 ### 주문
 
 - 관리자
@@ -337,6 +351,8 @@ src
     - 상품명 검색 기능
 
   ![Image](https://github.com/user-attachments/assets/9f0b446a-8e50-4c89-af78-1d0a88242373)
+
+<br>
 
 ### 배송지
 
