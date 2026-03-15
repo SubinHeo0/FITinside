@@ -58,6 +58,6 @@ public class OrderProduct {
     public void deleteOrderProduct() {
         this.isDeleted = true;
         this.product.restoreStock(this.count);
-        this.couponMember.cancelUseCoupon();
+        if(couponMember != null) this.couponMember.cancelUseCoupon();
     }
 }
